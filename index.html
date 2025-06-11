@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodando a Gas - Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #e2e8f0; /* slate-200 */
+            overflow-x: hidden;
+        }
+        .slide {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 1.5rem; /* Increased horizontal padding */
+            position: relative;
+            border-bottom: 1px solid #1e293b; /* slate-800 */
+        }
+        .highlight-text {
+            background: -webkit-linear-gradient(45deg, #22d3ee, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            @apply bg-slate-900/50 p-6 rounded-2xl border border-slate-800 backdrop-blur-sm h-full;
+        }
+        .slide-title {
+            @apply text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter;
+        }
+        /* Refined Subtitle for better readability */
+        .slide-subtitle {
+            @apply text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed;
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Slide 1: Hero -->
+    <section class="slide text-center" style="background-image: radial-gradient(circle at top, rgba(15, 23, 42, 0.5), #020617 70%), url('https://placehold.co/1920x1080/020617/38bdf8?text=Rodando+a+Gas'); background-size: cover; background-position: center;">
+        <div class="max-w-4xl">
+            <h1 class="text-5xl md:text-8xl font-black text-white leading-tight tracking-tighter mb-6" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
+                Financiamiento Inteligente para la <span class="highlight-text">Revolución</span> del Transporte
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Una plataforma humanamente tecnológica que ataca la raíz del problema de la flota obsoleta en México, con un modelo de riesgo controlado por IA y una TIR >22%.
+            </p>
+            <a href="#problema" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg">Descubre la Oportunidad</a>
+        </div>
+        <div class="scroll-down text-white">
+            <i data-lucide="arrow-down" class="w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- Slide 2: Problema -->
+    <section id="problema" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Una Crisis Operativa y Financiera</h2>
+            <p class="slide-subtitle">El transporte público en México enfrenta un problema sistémico que el mercado tradicional no ha podido resolver.</p>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="card">
+                    <i data-lucide="clock" class="w-10 h-10 mb-4 text-rose-400"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Flota Obsoleta</h3>
+                    <p class="text-slate-300 leading-relaxed">Más de 15,000 vagonetas con +10 años (EDOMEX). Ineficientes, contaminantes y un riesgo para la seguridad.</p>
+                </div>
+                <div class="card">
+                    <i data-lucide="flame" class="w-10 h-10 mb-4 text-amber-400"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Costos Incontenibles</h3>
+                    <p class="text-slate-300 leading-relaxed">Operadores ahogados por gastos crecientes en combustible y mantenimiento correctivo.</p>
+                </div>
+                <div class="card">
+                    <i data-lucide="banknote" class="w-10 h-10 mb-4 text-slate-500"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Vacío de Financiamiento</h3>
+                    <p class="text-slate-300 leading-relaxed">La banca tradicional les ha dado la espalda y las pocas opciones tienen tasas predatorias que penalizan su volatilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 3: Oportunidad de Mercado -->
+    <section id="oportunidad" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Una Oportunidad de Mercado Masiva</h2>
+            <p class="slide-subtitle">La ineficiencia del mercado actual ha creado una demanda desatendida y perfectamente definida.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card text-center p-8"><p class="text-6xl font-black highlight-text mb-2">$10.9K M</p><p class="text-slate-200 font-semibold text-lg">TAM</p><p class="text-slate-400 text-sm mt-1">Mercado de vagonetas en México.</p></div>
+                <div class="card text-center p-8 border-sky-500/50 scale-105"><p class="text-6xl font-black highlight-text mb-2">$4.3K M</p><p class="text-slate-200 font-semibold text-lg">SAM</p><p class="text-slate-400 text-sm mt-1">Zonas metropolitanas con GNV.</p></div>
+                <div class="card text-center p-8"><p class="text-6xl font-black highlight-text mb-2">$1.1K M</p><p class="text-slate-200 font-semibold text-lg">SOM</p><p class="text-slate-400 text-sm mt-1">Nuestro objetivo a 3-5 años.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Solución -->
+    <section id="solucion" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Un Ecosistema de Rentabilidad y Protección</h2>
+            <p class="slide-subtitle">Atacamos el problema desde la raíz con un producto financiero diseñado para la realidad del transportista.</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+                <div class="card"><i data-lucide="truck" class="w-10 h-10 mb-4 text-sky-400"></i><h3 class="text-xl font-bold text-white mb-2">Financiamiento Adaptativo</h3><p class="text-slate-300 leading-relaxed">Venta a plazos de vagonetas nuevas a 48-60 meses con tasas justas y un modelo que se ajusta proactivamente a la operación del cliente.</p></div>
+                <div class="card border-emerald-500/50"><i data-lucide="shield-check" class="w-10 h-10 mb-4 text-emerald-400"></i><h3 class="text-xl font-bold text-white mb-2">PROTECCIÓN RODANDO</h3><p class="text-slate-300 leading-relaxed">Nuestra innovación clave: un paquete de flexibilidad financiera y operativa, gestionado por IA, que se adapta en tiempo real a la volatilidad del negocio del transportista. Permite ajustar pagos por estacionalidad o imprevistos, sin penalizaciones, reduciendo el riesgo de morosidad y alineando nuestro éxito con el de el.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Modelo Único en el Mercado -->
+    <section id="modelo-unico" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Un Modelo Único en el Mercado</h2>
+            <p class="slide-subtitle">A diferencia de bancos y fintechs, nuestro ecosistema integra flexibilidad, datos operativos y automatización para crear una ventaja competitiva defendible.</p>
+            <div class="grid md:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
+                <div class="card opacity-70">
+                    <div class="text-center mb-4">
+                        <i data-lucide="landmark" class="w-12 h-12 mx-auto text-slate-500"></i>
+                        <h3 class="text-xl font-bold text-white mt-4">Financieras Tradicionales</h3>
+                        <p class="text-sm font-semibold text-rose-400">Modelo Rígido y Reactivo</p>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Ofrecen pagos fijos y evalúan con historial pasado. Su modelo es lento, burocrático y penaliza la volatilidad operativa del transportista.</p>
+                </div>
+                <div class="card opacity-70">
+                    <div class="text-center mb-4">
+                        <i data-lucide="smartphone" class="w-12 h-12 mx-auto text-slate-500"></i>
+                        <h3 class="text-xl font-bold text-white mt-4">Fintechs de Crédito</h3>
+                        <p class="text-sm font-semibold text-amber-400">Digital, pero Inflexible</p>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Aunque su onboarding es digital, sus productos de pago no se adaptan a la estacionalidad, los imprevistos o la operación real del negocio.</p>
+                </div>
+                <div class="card border-sky-500/50 scale-105">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/48x48/0ea5e9/ffffff?text=RaG" class="w-12 h-12 mx-auto rounded-full"/>
+                        <h3 class="text-xl font-bold text-white mt-4">Rodando a Gas</h3>
+                        <p class="text-sm font-semibold text-sky-400">Ecosistema Predictivo y Adaptativo</p>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Somos los únicos que integramos <strong class="text-white">scoring operativo</strong>, <strong class="text-white">flexibilidad en tiempo real</strong> (Protección Rodando) y <strong class="text-white">automatización con IA</strong> para anticipar riesgos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Modelo de Negocio -->
+    <section id="modelo-negocio" class="slide">
+        <div class="container mx-auto">
+            <div class="text-center">
+                <h2 class="slide-title">Un Modelo de Negocio Transparente</h2>
+                <p class="slide-subtitle">Fundamentos claros y múltiples flujos de ingreso que aseguran la rentabilidad y la alineación de intereses con nuestros clientes.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="card text-left">
+                    <h3 class="text-2xl font-bold text-white mb-6">El Producto Financiero</h3>
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-8">
+                        <div><p class="text-slate-400 text-sm">Tasa de Interés</p><p class="text-2xl font-bold text-white">23.9% - 26.9%</p></div>
+                        <div><p class="text-slate-400 text-sm">Plazos</p><p class="text-2xl font-bold text-white">48-60 Meses</p></div>
+                        <div><p class="text-slate-400 text-sm">Enganche Variable</p><p class="text-2xl font-bold text-white">12% - 18%</p></div>
+                        <div><p class="text-slate-400 text-sm">Flexibilidad</p><p class="text-2xl font-bold text-white">PROTECCIÓN RODANDO</p></div>
+                    </div>
+                </div>
+                <div class="card">
+                     <h3 class="text-2xl font-bold text-white mb-4 text-center">Flujos de Ingreso Primarios</h3>
+                     <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Go-to-Market -->
+    <section id="go-to-market" class="slide">
+        <div class="container mx-auto text-center">
+             <h2 class="slide-title">Estrategia de Entrada al Mercado de EDOMEX</h2>
+             <p class="slide-subtitle">Un plan por fases que prioriza la validación y la mitigación de riesgo sobre el crecimiento acelerado.</p>
+             <div class="w-full max-w-5xl mx-auto relative mt-8">
+                <!-- Line -->
+                <div class="absolute top-1/2 left-0 w-full h-0.5 bg-slate-700 -translate-y-1/2"></div>
+                <!-- Steps -->
+                <div class="relative flex justify-between text-left md:text-center">
+                    <div class="w-1/3 pr-4">
+                        <div class="mx-auto w-12 h-12 rounded-full bg-sky-500 border-4 border-slate-950 flex items-center justify-center font-black text-white text-xl">1</div>
+                        <h4 class="mt-4 font-bold text-white">Fase 0: Piloto</h4>
+                        <p class="text-sm text-slate-300 mt-1 leading-relaxed">Validación con 15-20 unidades en rutas "low-hanging fruit". Misión: Entrenar la IA y probar el modelo.</p>
+                    </div>
+                     <div class="w-1/3 px-2">
+                        <div class="mx-auto w-12 h-12 rounded-full bg-sky-500 border-4 border-slate-950 flex items-center justify-center font-black text-white text-xl">2</div>
+                        <h4 class="mt-4 font-bold text-white">Hitos de Validación</h4>
+                        <p class="text-sm text-slate-300 mt-1 leading-relaxed">Escalamos solo si cumplimos métricas clave: Morosidad <8%, rentabilidad validada, y precisión del Score IA.</p>
+                    </div>
+                     <div class="w-1/3 pl-4">
+                        <div class="mx-auto w-12 h-12 rounded-full bg-sky-500 border-4 border-slate-950 flex items-center justify-center font-black text-white text-xl">3</div>
+                        <h4 class="mt-4 font-bold text-white">Fase 1: Crecimiento</h4>
+                        <p class="text-sm text-slate-300 mt-1 leading-relaxed">Expansión controlada para alcanzar 35 unidades en el Año 1, replicando el éxito del piloto.</p>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Modelo Financiero -->
+    <section id="modelo-financiero" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Un Modelo Financiero Defendido por Datos</h2>
+            <p class="slide-subtitle">Nuestras proyecciones se basan en un modelo conservador, validado para soportar condiciones adversas y aun así entregar una rentabilidad excepcional.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
+                <div class="card text-center p-4"><p class="text-4xl font-black text-white">35</p><p class="text-sm text-slate-400 mt-1">Unidades Año 1</p></div>
+                <div class="card text-center p-4"><p class="text-4xl font-black text-white"><8%</p><p class="text-sm text-slate-400 mt-1">Morosidad Estructural</p></div>
+                <div class="card text-center p-4"><p class="text-4xl font-black text-white">15%</p><p class="text-sm text-slate-400 mt-1">OPEX Proyectado</p></div>
+                <div class="card text-center p-4 bg-sky-900/50 border-sky-500/50"><p class="text-4xl font-black text-sky-400">22.8%</p><p class="text-sm text-white mt-1">TIR</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Equipo -->
+    <section id="equipo" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Un Equipo Lean y de Alto Impacto</h2>
+            <p class="slide-subtitle">Un núcleo fundador con la combinación perfecta de visión estratégica, capacidad tecnológica y experiencia en ejecución.</p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="card text-center">
+                    <img src="https://placehold.co/150x150/0f172a/38bdf8?text=CEO" class="rounded-full mx-auto mb-4 border-2 border-slate-700">
+                    <h3 class="text-xl font-bold text-white">CEO</h3>
+                    <p class="text-slate-300 leading-relaxed">Visión Estratégica y Capital</p>
+                </div>
+                <div class="card text-center">
+                    <img src="https://placehold.co/150x150/0f172a/38bdf8?text=CTO" class="rounded-full mx-auto mb-4 border-2 border-slate-700">
+                    <h3 class="text-xl font-bold text-white">CTO</h3>
+                    <p class="text-slate-300 leading-relaxed">Producto Tecnológico y IA</p>
+                </div>
+                 <div class="card text-center">
+                    <img src="https://placehold.co/150x150/0f172a/38bdf8?text=Ops" class="rounded-full mx-auto mb-4 border-2 border-slate-700">
+                    <h3 class="text-xl font-bold text-white">Gerente de Operaciones</h3>
+                    <p class="text-slate-300 leading-relaxed">Ejecución en Campo y Ventas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 10: La Inversión -->
+    <section id="inversion" class="slide">
+        <div class="container mx-auto">
+            <div class="text-center">
+                <h2 class="slide-title">La Oportunidad de Inversión (Serie A)</h2>
+                <p class="slide-subtitle">Buscamos socios para escalar una plataforma cuyo modelo de negocio, tecnología y rentabilidad serán validados en un piloto controlado.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+                <div class="card text-center">
+                     <p class="text-slate-400 text-sm font-bold tracking-widest">PETICIÓN DE CAPITAL</p>
+                     <p class="text-7xl font-black highlight-text my-4">$45M MXN</p>
+                     <p class="text-slate-300 leading-relaxed">Para ejecutar el piloto, el crecimiento del primer año y el desarrollo tecnológico.</p>
+                </div>
+                <div class="card text-left">
+                    <h3 class="font-bold text-white mb-4 text-lg">Estructura de Inversión Inteligente:</h3>
+                     <div class="space-y-4">
+                         <div class="flex items-start"><i data-lucide="flag" class="w-8 h-8 text-sky-400 mr-4 shrink-0 mt-1"></i><div><h4 class="font-bold text-white">Inversión por Hitos</h4><p class="text-slate-300 text-sm leading-relaxed">El capital se desembolsará en tranches, condicionados al éxito del piloto, minimizando el riesgo inicial.</p></div></div>
+                         <div class="flex items-start"><i data-lucide="trending-up" class="w-8 h-8 text-emerald-400 mr-4 shrink-0 mt-1"></i><div><h4 class="font-bold text-white">Fase 2: Venture Debt</h4><p class="text-slate-300 text-sm leading-relaxed">Post-piloto, buscaremos una línea de crédito para la flota, reservando el equity para escalar la tecnología.</p></div></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 11: RaG Tech Intro -->
+    <section id="rag-tech-intro" class="slide text-center">
+        <div class="max-w-4xl">
+            <p class="text-lg font-bold highlight-text mb-4">NUESTRA VENTAJA COMPETITIVA</p>
+            <h2 class="text-5xl md:text-7xl font-black text-white leading-tight tracking-tighter mb-6" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
+                Una Plataforma Humanamente Tecnológica
+            </h2>
+            <p class="text-xl text-slate-300 leading-relaxed">
+                Usamos la tecnología no para reemplazar el juicio, sino para potenciarlo. <strong class="text-white">RaG Tech</strong> es nuestro motor para ofrecer un financiamiento más justo, flexible y rentable.
+            </p>
+        </div>
+    </section>
+
+    <!-- Slide 12: Ventaja Competitiva Defendible (Los 4 Fosos) -->
+    <section id="rag-tech" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Ventaja Competitiva Defendible (Los 4 Fosos)</h2>
+            <p class="slide-subtitle">Nuestra estrategia se basa en la construcción de cuatro barreras competitivas ("moats") que se refuerzan mutuamente.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="database" class="w-8 h-8 text-sky-400 mr-3"></i><h3 class="text-xl font-bold text-white">Data Moat</h3></div><p class="text-slate-300 text-sm leading-relaxed">Capturamos decenas de variables operativas únicas (consumo GNV, patrones de ruta, liquidez) que los competidores no ven, creando un modelo de riesgo con precisión inigualable.</p></div>
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="cpu" class="w-8 h-8 text-amber-400 mr-3"></i><h3 class="text-xl font-bold text-white">Tech Moat</h3></div><p class="text-slate-300 text-sm leading-relaxed">Construimos agentes de IA (para scoring, cobranza y mantenimiento) sobre nuestra data propietaria, creando una barrera tecnológica difícil y costosa de replicar.</p></div>
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="trending-up" class="w-8 h-8 text-emerald-400 mr-3"></i><h3 class="text-xl font-bold text-white">Operational Moat</h3></div><p class="text-slate-300 text-sm leading-relaxed">Nuestra arquitectura está diseñada para automatizar procesos clave, apuntando a reducir el onboarding de días a horas y operar con una estructura ultra-lean.</p></div>
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="users" class="w-8 h-8 text-rose-400 mr-3"></i><h3 class="text-xl font-bold text-white">Network Effects</h3></div><p class="text-slate-300 text-sm leading-relaxed">Cada nuevo cliente mejora el scoring para todos, permitiendo mejores tasas y atrayendo a más operadores, reforzando nuestro liderazgo en el nicho.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 13: Ecosistema de Agentes IA -->
+    <section id="agentes-ia" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Nuestra Operación Potenciada por Agentes de IA</h2>
+            <p class="slide-subtitle">Cada agente tiene una función específica que reduce costos, previene riesgos y mejora la experiencia del cliente.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="file-check-2" class="w-8 h-8 text-sky-400 mr-3"></i><h3 class="text-xl font-bold text-white">Agente de Onboarding</h3></div><p class="text-slate-300 text-sm leading-relaxed">Automatiza y valida el proceso de crédito, ofreciendo una experiencia 100% digital y sin fricción.</p></div>
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="message-circle-warning" class="w-8 h-8 text-amber-400 mr-3"></i><h3 class="text-xl font-bold text-white">Agente de Cobranza</h3></div><p class="text-slate-300 text-sm leading-relaxed">Detecta anomalías operativas y contacta al cliente con soluciones personalizadas <strong class="text-white">antes</strong> de que caiga en mora.</p></div>
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="wrench" class="w-8 h-8 text-emerald-400 mr-3"></i><h3 class="text-xl font-bold text-white">Agente de Postventa</h3></div><p class="text-slate-300 text-sm leading-relaxed">Diagnostica fallas mecánicas vía imagen/video (IA-Visión) y gestiona mantenimientos y refacciones proactivamente.</p></div>
+                <div class="card"><div class="flex items-center mb-4"><i data-lucide="shield-check" class="w-8 h-8 text-rose-400 mr-3"></i><h3 class="text-xl font-bold text-white">Agente de Flexibilidad</h3></div><p class="text-slate-300 text-sm leading-relaxed">Ejecuta las reglas de "Protección Rodando" de forma automática y transparente, gestionando la sostenibilidad del portafolio.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 14: Contacto -->
+    <section id="contacto" class="slide">
+        <div class="container mx-auto text-center">
+            <h2 class="slide-title">Listos para Ejecutar</h2>
+            <p class="slide-subtitle">Si compartes nuestra visión de revolucionar el financiamiento con tecnología y buscas una oportunidad de alto impacto con un riesgo controlado, nos encantaría conversar.</p>
+            <button class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-12 py-4 rounded-lg transition-colors text-xl">Solicitar Reunión</button>
+             <footer class="absolute bottom-4 text-center text-slate-500 text-xs">
+                <p>&copy; 2025 Rodando a Gas. Todos los derechos reservados.</p>
+                <p>Este documento es confidencial y para propósitos informativos únicamente.</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Slide 15: Anexo Técnico -->
+    <section id="anexo-tecnico" class="slide bg-slate-950">
+        <div class="container mx-auto text-center">
+            <h2 class="text-5xl md:text-6xl font-black text-white mb-4 tracking-tighter">Anexo: Roadmap Tecnológico</h2>
+            <p class="slide-subtitle">Nuestro plan de ejecución prioriza la agilidad y la defensibilidad, migrando progresivamente de un MVP defendible a una arquitectura propietaria y escalable.</p>
+            <div class="grid lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
+                <!-- Roadmap por Fases -->
+                <div class="card">
+                    <div class="flex items-center mb-4"><i data-lucide="rocket" class="w-8 h-8 text-sky-400 mr-3"></i><h3 class="text-xl font-bold text-white">Roadmap por Fases</h3></div>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start"><div class="font-bold text-sky-400 w-32 shrink-0">Fase 0:</div><div class="leading-relaxed"><strong class="text-white">MVP Defendible.</strong> Validar el modelo con 15-20 unidades y probar hipótesis clave con un stack ultra-lean.</div></li>
+                        <li class="flex items-start"><div class="font-bold text-sky-400 w-32 shrink-0">Fase 1:</div><div class="leading-relaxed"><strong class="text-white">Consolidación Propietaria.</strong> Desarrollar scoring y automatización core con 35 unidades.</div></li>
+                        <li class="flex items-start"><div class="font-bold text-sky-400 w-32 shrink-0">Fase 2:</div><div class="leading-relaxed"><strong class="text-white">Arquitectura de Escala.</strong> Expandir a 75-150 unidades con BI avanzado y MLOps.</div></li>
+                    </ul>
+                </div>
+                <!-- Stack Evolutivo -->
+                <div class="card">
+                    <div class="flex items-center mb-4"><i data-lucide="layers" class="w-8 h-8 text-amber-400 mr-3"></i><h3 class="text-xl font-bold text-white">Stack Tecnológico Evolutivo</h3></div>
+                     <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start"><div class="font-bold text-amber-400 w-24 shrink-0">MVP:</div><div class="leading-relaxed"><strong class="text-white">Low-Code.</strong> Make.com, Google Sheets, APIs de terceros para máxima velocidad.</div></li>
+                        <li class="flex items-start"><div class="font-bold text-amber-400 w-24 shrink-0">Core:</div><div class="leading-relaxed"><strong class="text-white">Propietario.</strong> Python (FastAPI), Kafka, XGBoost, PostgreSQL para construir el Data Moat.</div></li>
+                        <li class="flex items-start"><div class="font-bold text-amber-400 w-24 shrink-0">Escala:</div><div class="leading-relaxed"><strong class="text-white">Enterprise.</strong> Flink, MLflow, Redis, Vault para una operación robusta y multi-regional.</div></li>
+                    </ul>
+                </div>
+                <!-- Principios de Ejecución -->
+                <div class="card">
+                    <div class="flex items-center mb-4"><i data-lucide="compass" class="w-8 h-8 text-emerald-400 mr-3"></i><h3 class="text-xl font-bold text-white">Principios de Ejecución</h3></div>
+                     <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start leading-relaxed"><i data-lucide="corner-down-right" class="w-4 h-4 text-emerald-400 mr-3 mt-1 shrink-0"></i><div><strong>Arranque Ultra-Lean:</strong> Validar rápido y barato con herramientas no-code.</div></li>
+                        <li class="flex items-start leading-relaxed"><i data-lucide="corner-down-right" class="w-4 h-4 text-emerald-400 mr-3 mt-1 shrink-0"></i><div><strong>Migración Progresiva:</strong> Reemplazar componentes con tecnología propietaria de forma incremental.</div></li>
+                        <li class="flex items-start leading-relaxed"><i data-lucide="corner-down-right" class="w-4 h-4 text-emerald-400 mr-3 mt-1 shrink-0"></i><div><strong>Defensibilidad por Datos:</strong> La ventaja competitiva se basa en nuestros datos operativos únicos.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+
+        // Chart.js for Revenue Streams
+        const ctx = document.getElementById('revenueChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Intereses por Financiamiento', 'Venta de Refacciones', 'Comisión GNV'],
+                    datasets: [{
+                        label: '% de Ingresos Recurrentes',
+                        data: [87.5, 6.7, 5.8],
+                        backgroundColor: [
+                            'rgba(14, 165, 233, 0.7)', // sky-500
+                            'rgba(52, 211, 153, 0.7)', // emerald-400
+                            'rgba(251, 191, 36, 0.7)' // amber-400
+                        ],
+                        borderColor: [
+                            '#0ea5e9',
+                            '#34d399',
+                            '#fbb024'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#94a3b8', // slate-400
+                                font: {
+                                    family: "'Inter', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
