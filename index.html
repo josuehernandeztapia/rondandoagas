@@ -82,6 +82,14 @@
         .shake {
             animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
         }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #access-portal, #presentation-content {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -110,7 +118,7 @@
                     Financiamiento Inteligente para la <span class="highlight-text">Revolución</span> del Transporte
                 </h1>
                 <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                    Una plataforma <strong class="text-white">humanamente tecnológica</strong> que ataca la raíz del problema de la flota obsoleta en México, con un modelo de <strong class="text-white">riesgo controlado por IA</strong> y una <strong class="text-white">TIR >22%</strong>.
+                    Una plataforma <strong class="text-white">humanamente tecnológica</strong> que ataca la raíz del problema de la flota obsoleta en México, con un modelo de <strong class="text-white">riesgo controlado con IA</strong> y una <strong class="text-white">TIR >22%</strong>.
                 </p>
                 <a href="#problema" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg">Descubre la Oportunidad</a>
             </div>
@@ -206,26 +214,23 @@
         <!-- Slide 6: Nuestra Fórmula -->
         <section id="formula" class="slide">
              <div class="container mx-auto text-center">
-                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Nuestra Fórmula: Donde la Calle Entrena a la Nube</h2>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Nuestra Fórmula: El Modelo Pre-Entrenado para el Mundo Real</h2>
                 <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">No somos una fintech. Somos expertos en transporte que usamos la tecnología para escalar un conocimiento del negocio que es imposible de replicar.</p>
                 <div class="grid lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
-                    <!-- Acto 1 -->
                     <div class="card">
-                        <div class="flex items-center mb-4"><i data-lucide="map" class="w-8 h-8 text-sky-400 mr-3"></i><h3 class="text-xl font-bold text-white">El Conocimiento de la Calle</h3></div>
-                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Nuestra base son <strong class="text-white">+20 años de experiencia</strong> directa en las rutas. Entendemos la <strong class="text-white">'psicología de la ruta'</strong>, la lealtad del chofer, los 'gastos hormiga' y que una <strong class="text-white">'carta aval de ruta'</strong> es un compromiso social. Este es nuestro activo más valioso.</p>
-                        <p class="text-sm text-slate-400 mt-4 italic">Límite del modelo tradicional: Este conocimiento, por sí solo, no es escalable.</p>
+                        <div class="flex items-center mb-4"><i data-lucide="map" class="w-8 h-8 text-sky-400 mr-3"></i><h3 class="text-xl font-bold text-white">Experiencia en la Calle + Data de Crisis</h3></div>
+                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Nuestra ventaja se basa en dos activos que ningún competidor puede replicar: <strong class="text-white">1) +20 años de experiencia</strong> entendiendo la 'psicología de la ruta', la lealtad del chofer, los 'gastos hormiga' y que una <strong class="text-white">'carta aval de ruta'</strong> es un compromiso social. <strong class="text-white">2) Acceso a un dataset histórico único</strong> de miles de unidades de GNV, que incluye su comportamiento de consumo y pago durante la peor crisis del transporte (pandemia-postpandemia).</p>
+                        <p class="text-sm text-slate-400 mt-4 italic">Tenemos un 'simulador de vuelo' que nos permite saber qué funciona antes de arriesgar el primer peso de la inversión.</p>
                     </div>
-                    <!-- Acto 2 -->
                     <div class="card">
-                        <div class="flex items-center mb-4"><i data-lucide="brain-circuit" class="w-8 h-8 text-amber-400 mr-3"></i><h3 class="text-xl font-bold text-white">La Alquimia: Experiencia en Reglas</h3></div>
-                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Usamos esa experiencia para hacer el <strong class="text-white">'fine-tuning' de nuestra IA</strong>. Le enseñamos a la máquina las reglas no escritas de la calle, convirtiendo la intuición humana en un modelo predictivo que sí funciona en este entorno.</p>
-                        <p class="text-sm text-slate-400 mt-4 italic">Límite de la IA genérica: Sin este contexto, cualquier IA tomaría decisiones incorrectas.</p>
+                        <div class="flex items-center mb-4"><i data-lucide="brain-circuit" class="w-8 h-8 text-amber-400 mr-3"></i><h3 class="text-xl font-bold text-white">La Alquimia: Convertimos Experiencia en Reglas</h3></div>
+                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Aquí está nuestra alquimia. No somos una fintech genérica. Usamos nuestros <strong class="text-white">+20 años de experiencia para hacer el 'fine-tuning' de nuestra IA.</strong> Le enseñamos a la máquina las reglas no escritas de la calle, convirtiendo la intuición humana en un modelo predictivo que realmente funciona en este entorno.</p>
+                        <p class="text-sm text-slate-400 mt-4 italic">Límite de la IA genérica: Sin este 'fine-tuning' con contexto real, cualquier IA aprendería las lecciones equivocadas de los datos de la pandemia y fracasaría.</p>
                     </div>
-                    <!-- Acto 3 -->
                     <div class="card">
-                        <div class="flex items-center mb-4"><i data-lucide="rocket" class="w-8 h-8 text-emerald-400 mr-3"></i><h3 class="text-xl font-bold text-white">Tecnología que Escala Confianza</h3></div>
-                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Nuestra plataforma amplifica este conocimiento único para ofrecer <strong class="text-white">scoring preciso</strong>, <strong class="text-white">flexibilidad relevante</strong> y <strong class="text-white">automatización con empatía</strong>, construyendo un modelo de negocio rentable y defendible.</p>
-                        <p class="text-sm text-slate-400 mt-4 italic">El resultado: Un modelo híbrido, necesario para resolver este problema a escala.</p>
+                        <div class="flex items-center mb-4"><i data-lucide="rocket" class="w-8 h-8 text-emerald-400 mr-3"></i><h3 class="text-xl font-bold text-white">La Tecnología: Desplegando Inteligencia Pre-Validada</h3></div>
+                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Nuestra plataforma tecnológica no experimenta: <strong class="text-white">ejecuta una estrategia ya validada</strong>. Su único propósito es amplificar nuestro conocimiento único y entregar de manera rentable y consistente: <strong class="text-white">Scoring Preciso y Anti-frágil</strong>, <strong class="text-white">"Protección Rodando"</strong> basado en lecciones reales, y <strong class="text-white">Automatización con Empatía</strong>.</p>
+                         <p class="text-sm text-slate-400 mt-4 italic">El resultado: Un modelo híbrido, necesario para resolver este problema a escala.</p>
                     </div>
                 </div>
             </div>
@@ -267,7 +272,7 @@
                         <div class="text-slate-300 text-sm"><strong>Mitigación:</strong> Nuestra estrategia se basa en <strong class="text-white">alianzas y acuerdos exclusivos</strong> con estaciones GNV. Esta dependencia inicial se convierte en nuestro <strong class="text-white">Data Moat</strong> y en una barrera de entrada.</div>
                     </div>
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left p-4 rounded-lg bg-slate-900/50">
-                        <div class="font-bold text-white"><i data-lucide="users-2" class="inline-block w-5 h-5 mr-2 text-rose-400"></i>Riesgo: Ejecución y Escalabilidad</div>
+                        <div class="font-bold text-white"><i data-lucide="users-2" class="w-5 h-5 mr-2 text-rose-400"></i>Riesgo: Ejecución y Escalabilidad</div>
                         <div class="text-slate-300 text-sm"><strong>Mitigación:</strong> Los <strong class="text-white">Agentes de IA</strong> nos permiten operar con una eficiencia 10x y una estructura ultra-lean. Nuestro plan de <strong class="text-white">contrataciones clave</strong> está alineado con la construcción de nuestros fosos.</div>
                     </div>
                 </div>
@@ -327,8 +332,8 @@
         <!-- Slide 10: La Inversión -->
         <section id="inversion" class="slide">
             <div class="container mx-auto text-center">
-                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">La Oportunidad de Inversión (Serie A)</h2>
-                <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">Buscamos socios para escalar una plataforma cuyo modelo de negocio, tecnología y rentabilidad serán validados en un piloto controlado.</p>
+                <<h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">La Oportunidad de Inversión (Serie A)</h2>
+                <p class="slide-subtitle">Buscamos socios para escalar una plataforma cuyo modelo de negocio, tecnología y rentabilidad serán validados en un piloto controlado.</p>
                 <div class="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
                     <div class="card text-center">
                          <p class="text-slate-400 text-sm font-bold tracking-widest">PETICIÓN DE CAPITAL</p>
@@ -350,7 +355,7 @@
         <section id="contacto" class="slide">
             <div class="container mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Listos para Ejecutar</h2>
-                <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">Si compartes nuestra visión de revolucionar el financiamiento con tecnología y buscas una oportunidad de alto impacto con un riesgo controlado, nos encantaría conversar.</p>
+                <p class="slide-subtitle">Si compartes nuestra visión de revolucionar el financiamiento con tecnología y buscas una oportunidad de alto impacto con un riesgo controlado, nos encantaría conversar.</p>
                 <button class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-12 py-4 rounded-lg transition-colors text-xl">Solicitar Reunión</button>
                  <footer class="absolute bottom-4 left-0 right-0 text-center text-slate-500 text-xs">
                     <p>&copy; 2025 Rodando a Gas. Todos los derechos reservados.</p>
@@ -363,7 +368,7 @@
         <section id="anexos" class="slide bg-slate-950">
             <div class="container mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Anexos</h2>
-                <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">Información detallada.</p>
+                <p class="slide-subtitle">Información detallada.</p>
                 <div class="w-full max-w-6xl mx-auto space-y-12">
                     <!-- Anexo 1: Protección Rodando -->
                     <div class="card text-left">
@@ -444,6 +449,29 @@
         accessCodeInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 checkAccessCode();
+            }
+        });
+
+        // Auto-refresh on inactivity
+        let inactivityTimer;
+        function resetTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                location.reload();
+            }, 15 * 60 * 1000); // 15 minutes
+        }
+
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
+        document.onclick = resetTimer;
+        document.onscroll = resetTimer;
+        document.onfocus = resetTimer;
+
+        // Disable printing
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
             }
         });
 
