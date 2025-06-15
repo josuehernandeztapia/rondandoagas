@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodando a Gas - Series A Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMeaCssLdsfunD2NLUUV9YV6dvMOBYwU1gEbIFVtYKfnUiT2g" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #e2e8f0; /* slate-200 */
+            overflow: hidden;
+        }
+        #access-portal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #020617;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        #presentation-content {
+            display: none; /* Hidden by default */
+        }
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+            border-bottom: 1px solid #1e293b; /* slate-800 */
+        }
+        .highlight-text {
+            background: -webkit-linear-gradient(45deg, #22d3ee, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            @apply bg-slate-900/50 p-6 rounded-2xl border border-slate-800 backdrop-blur-sm h-full;
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        .justified-text {
+            text-align: justify;
+        }
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0;
+            font-size: 1em;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+        .shake {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Access Portal -->
+    <div id="access-portal">
+        <div class="text-center p-4">
+            <h1 class="text-5xl md:text-8xl font-black text-white leading-tight tracking-tighter mb-4">
+                Rodando a <span class="highlight-text">Gas</span>
+            </h1>
+            <p class="text-slate-400 mb-8">Confidential content. Please enter the access code.</p>
+            <div class="flex flex-col sm:flex-row gap-2 max-w-sm mx-auto">
+                <input type="password" id="access-code" class="w-full bg-slate-800 text-white placeholder-slate-500 px-4 py-3 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Access Code">
+                <button id="access-button" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-8 py-3 rounded-lg transition-colors">Enter</button>
+            </div>
+            <p id="error-message" class="text-rose-500 text-sm mt-4 h-5"></p>
+        </div>
+    </div>
+    
+    <!-- Presentation Content -->
+    <main id="presentation-content">
+        <!-- Slide 1: Title -->
+        <section class="slide text-center" style="background-image: radial-gradient(circle at top, rgba(15, 23, 42, 0.5), #020617 70%);">
+            <div class="max-w-4xl">
+                <p class="text-sky-400 font-bold tracking-widest mb-4">CONFIDENTIAL | SERIES A</p>
+                <h1 class="text-5xl md:text-8xl font-black text-white leading-tight tracking-tighter mb-6" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
+                    Rodando a <span class="highlight-text">Gas</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    A <strong class="text-white">human-centric tech</strong> platform that attacks the root of Mexico's obsolete fleet problem, with an <strong class="text-white">AI-controlled risk</strong> model and an <strong class="text-white">IRR >22%</strong>.
+                </p>
+                <a href="#problem" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg">Discover the Opportunity</a>
+            </div>
+            <div class="scroll-down text-white">
+                <a href="#problem"><i data-lucide="arrow-down" class="w-8 h-8"></i></a>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Problem -->
+        <section id="problem" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">A <span class="highlight-text">$10.9 Billion</span> Systemic Crisis</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">The risk isn't the operator, it's the obsolete financial model.</p>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="card">
+                        <i data-lucide="clock" class="w-10 h-10 mb-4 text-rose-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Obsolete Fleet</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">More than <strong class="text-white">15,000 vans</strong> in the State of Mexico are an operational and environmental hazard. The operators are trapped.</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="banknote" class="w-10 h-10 mb-4 text-amber-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Financial Vacuum</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">Traditional banking turns its back on them. The alternatives have <strong class="text-white">predatory rates (>40%)</strong> that guarantee failure.</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="shield-alert" class="w-10 h-10 mb-4 text-slate-500"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">The Debt Spiral</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">An unforeseen event (breakdown, illness) starts a <strong class="text-white">debt spiral</strong>. The model is punitive, not preventive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: The Solution -->
+        <section id="solution" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">The Operational Resilience Ecosystem</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">We change the game from "Collections" to "Proactive Support."</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+                    <div class="card"><i data-lucide="truck" class="w-10 h-10 mb-4 text-sky-400"></i><h3 class="text-xl font-bold text-white mb-2">Adaptive Financing</h3><p class="text-slate-300 leading-relaxed justified-text">Installment credit for new NGV units, with fair rates and a model designed for the operator's reality.</p></div>
+                    <div class="card border-emerald-500/50"><i data-lucide="shield-check" class="w-10 h-10 mb-4 text-emerald-400"></i><h3 class="text-xl font-bold text-white mb-2">Rolling Protection</h3><p class="text-slate-300 leading-relaxed justified-text">Our secret weapon: an <strong class="text-white">AI-managed flexibility package</strong> that absorbs operational volatility and prevents non-payment.</p></div>
+                </div>
+                 <div class="scroll-down text-white">
+                    <a href="#formula"><i data-lucide="arrow-down" class="w-8 h-8"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Our Formula -->
+        <section id="formula" class="slide">
+             <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Our Formula: The <span class="highlight-text">Pre-Trained</span> Model</h2>
+                <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">We are not a generic fintech. We are transport experts who use technology to scale knowledge that is impossible to replicate.</p>
+                <div class="grid lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
+                    <div class="card">
+                        <div class="flex items-center mb-4"><i data-lucide="map-pinned" class="w-8 h-8 text-sky-400 mr-3"></i><h3 class="text-xl font-bold text-white">Street-Level Experience</h3></div>
+                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Our advantage is based on <strong class="text-white">+20 years of experience</strong> understanding the 'route psychology,' 'phantom expenses,' and that a <strong class="text-white">'route endorsement letter'</strong> is a powerful social commitment.</p>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-4"><i data-lucide="database-zap" class="w-8 h-8 text-amber-400 mr-3"></i><h3 class="text-xl font-bold text-white">Unique Historical Data</h3></div>
+                        <p class="text-slate-300 text-sm leading-relaxed justified-text">We analyzed a proprietary dataset with the behavior of thousands of units during the pandemic crisis. <strong class="text-white">We know how they behave under real stress.</strong></p>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-4"><i data-lucide="brain-circuit" class="w-8 h-8 text-emerald-400 mr-3"></i><h3 class="text-xl font-bold text-white">AI with Human Fine-Tuning</h3></div>
+                        <p class="text-slate-300 text-sm leading-relaxed justified-text">Our AI doesn't learn from scratch. It's <strong class="text-white">'fine-tuned' with our experience</strong>, turning human intuition into a predictive model that avoids the mistakes others would make.</p>
+                    </div>
+                </div>
+                <p class="mt-12 text-sm text-slate-500 italic">Our approval speed isn't magic: it's the synergy of knowing the routes and using technology to validate that trust in record time.</p>
+            </div>
+        </section>
+
+        <!-- Slide 5: The Magic behind Rolling Protection -->
+        <section id="magia" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">How We Turn Risk into Support</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">Our technology anticipates the problem. We don't wait for it to happen; we prevent it in 4 automated steps.</p>
+                <div class="grid md:grid-cols-4 gap-6 text-center max-w-6xl mx-auto">
+                    <div class="flex flex-col items-center"><div class="flex items-center justify-center w-20 h-20 rounded-full bg-slate-800 border border-slate-700 mb-4"><i data-lucide="radar" class="w-10 h-10 text-sky-400"></i></div><h3 class="font-bold text-white mb-2">1. Data Trigger</h3><p class="text-slate-400 text-sm">Our AI (HASE) detects an operational anomaly (e.g., drop in NGV consumption).</p></div>
+                    <div class="flex flex-col items-center"><div class="flex items-center justify-center w-20 h-20 rounded-full bg-slate-800 border border-slate-700 mb-4"><i data-lucide="message-square-heart" class="w-10 h-10 text-sky-400"></i></div><h3 class="font-bold text-white mb-2">2. Proactive Intervention</h3><p class="text-slate-400 text-sm">Our agent (PIA) contacts the operator via WhatsApp with a supportive message.</p></div>
+                    <div class="flex flex-col items-center"><div class="flex items-center justify-center w-20 h-20 rounded-full bg-slate-800 border border-slate-700 mb-4"><i data-lucide="toggle-right" class="w-10 h-10 text-sky-400"></i></div><h3 class="font-bold text-white mb-2">3. Flexible Activation</h3><p class="text-slate-400 text-sm">The operator activates "Rolling Protection" with a simple 'Yes', friction-free.</p></div>
+                    <div class="flex flex-col items-center"><div class="flex items-center justify-center w-20 h-20 rounded-full bg-slate-800 border border-slate-700 mb-4"><i data-lucide="line-chart" class="w-10 h-10 text-sky-400"></i></div><h3 class="font-bold text-white mb-2">4. IRR Balancing</h3><p class="text-slate-400 text-sm">The algorithm recalculates the payment plan to keep the loan's profitability intact.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Quantitative Advantage -->
+        <section id="ventaja" class="slide">
+            <div class="container mx-auto">
+                 <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter text-center">The Math Behind Our Advantage</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">We are not more flexible, we are smarter. Our empathy is profitable by design.</p>
+                <div class="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-4">Default Rate Reduction</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed justified-text">Our proactive intervention is a mathematical factor that drastically reduces the probability of default compared to the traditional model.</p>
+                        <div class="h-64"><canvas id="moraChart"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-4">Profitability Protection (IRR)</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed justified-text">The "IRR Balancing Algorithm" acts as a financial thermostat, adjusting payment plans to ensure each loan maintains its projected profitability.</p>
+                        <div class="bg-slate-950 p-4 rounded-lg text-center">
+                            <p class="text-3xl font-mono highlight-text">IRR<sub>Portfolio</sub> &ge; 22.8%</p>
+                            <p class="text-xs text-slate-500 mt-2">Conceptual Formula</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-sm text-slate-500">For a detailed analysis of the P_Default model, <a href="#anexo-pd" class="underline hover:text-sky-400">see Annex A</a>.</p>
+            </div>
+        </section>
+
+        <!-- Slide 7: Tech Moat -->
+        <section id="tecnologia" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Our Tech Moat: The Engine</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">We are not a finance company that uses technology. We are a technology company that redefines financing.</p>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="card">
+                        <i data-lucide="brain-circuit" class="w-10 h-10 mb-4 text-sky-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">HASE (Brain)</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">Hyper-Adaptive Scoring Engine that understands <strong class="text-white">risk in real-time</strong>.</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="heart-handshake" class="w-10 h-10 mb-4 text-amber-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">PIA (Heart)</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">Proactive Intervention Agent that communicates with <strong class="text-white">empathy</strong> at scale.</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="shield" class="w-10 h-10 mb-4 text-emerald-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">PMA (Shield)</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">Predictive Maintenance Advisor that <strong class="text-white">prevents breakdowns</strong> and downtime.</p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-sm text-slate-500">To see the evolution of our stack, <a href="#anexo-tech" class="underline hover:text-sky-400">see Annex B</a>.</p>
+            </div>
+        </section>
+        
+        <!-- Slide 8: Payment Ecosystem -->
+        <section id="pagos" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Frictionless <span class="highlight-text">Payment Ecosystem</span></h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">We designed a collection system that adapts to the operator's real cash flow, not the other way around. This drastically reduces friction and the likelihood of non-payment.</p>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+                    <div class="card">
+                        <i data-lucide="fuel" class="w-10 h-10 mb-4 text-emerald-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">1. Automatic Collection via Savings</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">A portion of the payment is covered by the <strong class="text-white">real savings generated from NGV consumption</strong>. The unit partly pays for itself while it works.</p>
+                        <p class="mt-4 text-xs text-sky-400/80 font-mono"><strong>Key Tech:</strong> API and Webhook integration with partner NGV stations.</p>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="store" class="w-10 h-10 mb-4 text-amber-400"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">2. Flexible Remainder Payment</h3>
+                        <p class="text-slate-300 leading-relaxed justified-text">The operator pays the rest with total convenience: via <strong class="text-white">SPEI</strong> transfer or in <strong class="text-white">cash at +20,000 convenience stores</strong>.</p>
+                        <p class="mt-4 text-xs text-sky-400/80 font-mono"><strong>Key Tech:</strong> Integration with payment gateways (STP, OXXO Pay) for automatic reconciliation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 9: Competitive Landscape -->
+        <section id="competencia" class="slide">
+            <div class="container mx-auto">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter text-center">Why No One Else Can Do This</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">Our competitors see credit as a transaction. We see it as a partnership.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="text-xs text-slate-400 uppercase">
+                            <tr>
+                                <th class="p-3">Feature</th>
+                                <th class="p-3 text-center">Traditional Financier</th>
+                                <th class="p-3 text-center">Platform Fintech</th>
+                                <th class="p-3 text-center bg-slate-800 rounded-t-lg">Rodando a Gas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-800"><td class="p-3 font-semibold">Risk Data</td><td class="p-3 text-center">Static (History)</td><td class="p-3 text-center">Dynamic (Income)</td><td class="p-3 text-center text-sky-400 font-bold bg-slate-800">Dynamic & Operational</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-3 font-semibold">Intervention Model</td><td class="p-3 text-center">Punitive</td><td class="p-3 text-center">Reactive</td><td class="p-3 text-center text-sky-400 font-bold bg-slate-800">Proactive & Predictive</td></tr>
+                            <tr class="border-b border-slate-800"><td class="p-3 font-semibold">Value Proposition</td><td class="p-3 text-center">Asset Loan</td><td class="p-3 text-center">Convenient Credit</td><td class="p-3 text-center text-sky-400 font-bold bg-slate-800">Resilience as a Service</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 10: Risks and Mitigation -->
+        <section id="riesgos" class="slide">
+             <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">Risks & Mitigation: <span class="highlight-text">Our Model as a Shield</span></h2>
+                <p class="text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">We have designed our business to turn the traditional risks of the sector into competitive strengths.</p>
+                <div class="space-y-4 max-w-4xl mx-auto text-left">
+                    <div class="p-4 rounded-lg bg-slate-900/50 flex items-start gap-4">
+                        <i data-lucide="trending-down" class="w-8 h-8 text-rose-400 shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-white">Risk: High Default Rate (>8%)</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>Mitigation:</strong> Our Operational Scoring (HASE) and Predictive Collections (PIA) allow us to act <strong class="text-white">before</strong> the default. We don't react, we prevent.</p>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-slate-900/50 flex items-start gap-4">
+                        <i data-lucide="gem" class="w-8 h-8 text-rose-400 shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-white">Risk: Abuse of Flexibility</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>Mitigation:</strong> The <strong class="text-white">IRR Control Dashboard</strong> is our automatic "handbrake." It adjusts the flexibility offering if the overall profitability drops below a threshold, protecting returns.</p>
+                        </div>
+                    </div>
+                     <div class="p-4 rounded-lg bg-slate-900/50 flex items-start gap-4">
+                        <i data-lucide="database-zap" class="w-8 h-8 text-rose-400 shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-white">Risk: Dependence on External Data</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>Mitigation:</strong> We turn this dependence into our moat. <strong class="text-white">Exclusive alliances and agreements</strong> with NGV stations create a barrier to entry for competitors.</p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+        
+        <!-- Slide 11: Flywheel -->
+        <section id="flywheel" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">The RAG Flywheel</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">Our model doesn't just grow, it gets stronger with scale. The competitive moat deepens with every customer.</p>
+                <div class="relative w-80 h-80 md:w-96 md:h-96 mx-auto">
+                    <div class="absolute inset-0 border-4 border-sky-500/30 rounded-full animate-spin" style="animation-duration: 40s;"></div>
+                    <div class="absolute inset-4 border-2 border-sky-500/20 rounded-full animate-spin" style="animation-duration: 30s; animation-direction: reverse;"></div>
+                    <div class="absolute inset-8 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-lucide="recycle" class="w-16 h-16 text-sky-400 mx-auto"></i>
+                            <p class="font-bold text-white text-2xl mt-2">Flywheel</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 text-center w-32"><i data-lucide="award" class="mx-auto w-6 h-6 text-emerald-400 mb-1"></i><p class="text-xs">Superior Product</p></div>
+                    <div class="absolute right-0 top-1/2 -translate-y-1/2 mt-4 text-center w-32"><i data-lucide="database" class="mx-auto w-6 h-6 text-emerald-400 mb-1"></i><p class="text-xs">More Data</p></div>
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 mb-4 text-center w-32"><i data-lucide="trending-up" class="mx-auto w-6 h-6 text-emerald-400 mb-1"></i><p class="text-xs">Higher Returns</p></div>
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 -mt-4 text-center w-32"><i data-lucide="brain-circuit" class="mx-auto w-6 h-6 text-emerald-400 mb-1"></i><p class="text-xs">Smarter AI</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 12: Financial Projections -->
+        <section id="proyecciones" class="slide">
+            <div class="container mx-auto">
+                 <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter text-center">The Path to Leadership</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">Our financial projections demonstrate capital-efficient growth and a diversified, profitable business model.</p>
+                <div class="grid lg:grid-cols-5 gap-8 items-start max-w-7xl mx-auto">
+                    <div class="card lg:col-span-3">
+                        <h3 class="text-xl font-bold text-white mb-4">Financial Projections (MXN)</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed justified-text">Revenue and EBITDA growth aligned with fleet expansion, demonstrating strong operational profitability at scale.</p>
+                        <div class="h-80"><canvas id="proyeccionesChart"></canvas></div>
+                    </div>
+                    <div class="card lg:col-span-2">
+                        <h3 class="text-xl font-bold text-white mb-4">Revenue Streams</h3>
+                         <p class="text-slate-300 text-sm mb-6 leading-relaxed justified-text">A diversified monetization model that captures value at multiple points in the chain.</p>
+                        <div class="h-48 mb-6"><canvas id="streamsChart"></canvas></div>
+                        <ul class="text-sm space-y-2 text-slate-400">
+                           <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-sky-500 mr-2"></span>Financing Interest</li>
+                           <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-teal-400 mr-2"></span>Margin on Unit Sale</li>
+                           <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-amber-400 mr-2"></span>Commissions & Services</li>
+                        </ul>
+                        <p class="text-xs text-slate-500 mt-4 italic">Future streams: Service marketplace, group lending, and MaaS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 13: Team -->
+        <section id="equipo" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">The Team to Build the Moats</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">The unique combination of "street-level" experience and the technological vision to execute this model.</p>
+                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/0f172a/38bdf8?text=CEO" class="rounded-full mx-auto mb-4 border-2 border-slate-700" alt="CEO Placeholder">
+                        <h3 class="text-xl font-bold text-white">Founder 1 (CEO)</h3><p class="text-sky-400 text-sm">Strategic Vision & Capital</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/0f172a/38bdf8?text=CTO" class="rounded-full mx-auto mb-4 border-2 border-slate-700" alt="CTO Placeholder">
+                        <h3 class="text-xl font-bold text-white">Founder 2 (CTO)</h3><p class="text-sky-400 text-sm">Tech Product & AI</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/0f172a/38bdf8?text=Ops" class="rounded-full mx-auto mb-4 border-2 border-slate-700" alt="Operations Placeholder">
+                        <h3 class="text-xl font-bold text-white">Founder 3 (COO)</h3><p class="text-sky-400 text-sm">Execution & Operations</p>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-6">Key Hires (Post-Series A)</h3>
+                <div class="flex justify-center gap-6 text-slate-400">
+                    <span class="flex items-center gap-2"><i data-lucide="brain-circuit" class="w-5 h-5"></i>Data Scientist / ML</span>
+                    <span class="flex items-center gap-2"><i data-lucide="shield" class="w-5 h-5"></i>Head of Credit & Risk</span>
+                    <span class="flex items-center gap-2"><i data-lucide="code-2" class="w-5 h-5"></i>Full-Stack Developer</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 14: The Ask -->
+        <section id="peticion" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter">The Ask - Series A</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">We are seeking strategic partners to scale an already validated model.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+                    <div class="card text-center">
+                         <p class="text-slate-400 text-sm font-bold tracking-widest">CAPITAL REQUIRED</p>
+                         <p class="text-7xl font-black highlight-text my-4">$45M MXN</p>
+                         <div class="text-left space-y-2 text-sm mt-4">
+                            <p><strong class="text-white">Structure:</strong> Milestone-based Investment (Tranches conditioned on pilot success).</p>
+                            <p><strong class="text-white">Capital Vision:</strong> Post-Series A, we will seek Venture Debt for fleet funding, reserving equity to scale technology.</p>
+                         </div>
+                    </div>
+                    <div class="card text-left">
+                        <h3 class="font-bold text-white mb-4 text-lg">Use of Funds</h3>
+                        <div class="h-64"><canvas id="fondosChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 15: Contact -->
+        <section id="contacto" class="slide">
+            <div class="container mx-auto text-center">
+                <h2 class="text-6xl md:text-7xl font-black text-white mb-6 tracking-tighter">Join the <span class="highlight-text">Revolution</span>.</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">Resolve your questions by interacting with our AI assistant or contact us to schedule a meeting.</p>
+                <div class="flex flex-col items-center gap-6">
+                    <a href="https://chatgpt.com/g/g-684e62677038819188bcd4bfd5ab4b07-q-a-rondando" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-10 py-5 rounded-lg transition-colors text-xl inline-flex items-center justify-center gap-3">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                        Ask the Rodando Q&A
+                    </a>
+                    <a href="mailto:contacto@rodando.lat" class="text-lg text-sky-400/80 hover:text-sky-400">contacto@rodando.lat</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 16: Annex A -->
+        <section id="anexo-pd" class="slide bg-slate-950">
+            <div class="container mx-auto">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter text-center">Annex A: The Mathematical Model of <span class="highlight-text">Rolling Protection</span></h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">A look at the quantitative foundation demonstrating how our model actively reduces default risk.</p>
+                <div class="grid lg:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+                    <div class="card border-rose-500/50">
+                        <h3 class="text-xl font-bold text-rose-400 mb-4 text-center">The Traditional Debt Spiral</h3>
+                        <div class="space-y-4">
+                            <div class="text-center"><i data-lucide="cloud-lightning" class="w-10 h-10 text-rose-400 mx-auto"></i><p class="mt-1 font-semibold">Adverse Event</p><p class="text-xs text-slate-400">(Mechanical failure, illness)</p></div>
+                            <div class="text-center text-3xl font-black text-rose-400">&darr;</div>
+                            <div class="text-center"><i data-lucide="x-circle" class="w-10 h-10 text-rose-400 mx-auto"></i><p class="mt-1 font-semibold">Payment Default</p></div>
+                            <div class="text-center text-3xl font-black text-rose-400">&darr;</div>
+                            <div class="text-center"><i data-lucide="trending-up" class="w-10 h-10 text-rose-400 mx-auto"></i><p class="mt-1 font-semibold">Punitive Interest</p><p class="text-xs text-slate-400">(Debt grows)</p></div>
+                            <div class="text-center text-3xl font-black text-rose-400">&darr;</div>
+                             <div class="text-center"><i data-lucide="bomb" class="w-10 h-10 text-rose-400 mx-auto"></i><p class="mt-1 font-semibold">Accelerated Default</p></div>
+                        </div>
+                    </div>
+                     <div class="card border-emerald-500/50">
+                        <h3 class="text-xl font-bold text-emerald-400 mb-4 text-center">The RAG Support Cycle</h3>
+                        <div class="space-y-4">
+                            <div class="text-center"><i data-lucide="cloud-lightning" class="w-10 h-10 text-emerald-400 mx-auto"></i><p class="mt-1 font-semibold">Adverse Event</p><p class="text-xs text-slate-400">(Mechanical failure, illness)</p></div>
+                            <div class="text-center text-3xl font-black text-emerald-400">&darr;</div>
+                            <div class="text-center"><i data-lucide="radar" class="w-10 h-10 text-emerald-400 mx-auto"></i><p class="mt-1 font-semibold">Proactive AI Detection</p></div>
+                            <div class="text-center text-3xl font-black text-emerald-400">&darr;</div>
+                            <div class="text-center"><i data-lucide="shield-check" class="w-10 h-10 text-emerald-400 mx-auto"></i><p class="mt-1 font-semibold">Flexibility Activated</p><p class="text-xs text-slate-400">(Payment deferred, no fees)</p></div>
+                             <div class="text-center text-3xl font-black text-emerald-400">&darr;</div>
+                             <div class="text-center"><i data-lucide="refresh-cw" class="w-10 h-10 text-emerald-400 mx-auto"></i><p class="mt-1 font-semibold">Stability Maintained</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-8 max-w-4xl mx-auto">
+                    <h3 class="text-xl font-bold text-white mb-4">Dynamic Probability of Default Model ($P_{default}$)</h3>
+                    <p class="text-slate-300 text-sm mb-4 leading-relaxed justified-text">Unlike static models, our HASE engine treats $P_{default}$ as a dynamic time-series variable. The key is the <strong class="text-white">Intervention Flag</strong>, which mathematically reduces risk.</p>
+                    <div class="bg-slate-950 p-4 rounded-lg text-center text-white">
+                        $P_{default}(t) = f(\text{Statics}, \text{Score}_{\text{Behavioral}}(t-1), \text{Flag}_{\text{Intervention}}(t))$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 17: Annex B -->
+        <section id="anexo-tech" class="slide bg-slate-950" style="border-bottom: none;">
+            <div class="container mx-auto">
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter text-center">Annex B: Evolving Tech Roadmap</h2>
+                <p class="text-lg text-slate-400 mb-12 max-w-3xl mx-auto text-center leading-relaxed">Our development plan is pragmatic and capital-efficient, evolving from an agile MVP to a proprietary and scalable platform.</p>
+                <div class="grid lg:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
+                    <div class="card border-sky-900">
+                        <h3 class="text-xl font-bold highlight-text mb-4">Phase 0: Lean Pilot <span class="text-xs text-slate-400">(Months 1-6)</span></h3>
+                        <p class="font-semibold text-white mb-2">Goal:</p>
+                        <p class="text-slate-300 text-sm mb-4">Defensible MVP. Validate key hypotheses with 15-20 units and an ultra-lean stack.</p>
+                        <p class="font-semibold text-white mb-2">Key Tech Stack:</p>
+                        <ul class="text-sm text-slate-300 list-disc list-inside space-y-1">
+                            <li><strong class="text-white">Automation:</strong> Make.com, Zapier</li>
+                            <li><strong class="text-white">Database:</strong> Google Sheets, Airtable</li>
+                            <li><strong class="text-white">Scoring:</strong> Third-party API (benchmark)</li>
+                        </ul>
+                    </div>
+                    <div class="card border-sky-700">
+                        <h3 class="text-xl font-bold highlight-text mb-4">Phase 1: Consolidation <span class="text-xs text-slate-400">(Months 7-18)</span></h3>
+                        <p class="font-semibold text-white mb-2">Goal:</p>
+                        <p class="text-slate-300 text-sm mb-4">Develop proprietary scoring and automation core, scaling to 35 units.</p>
+                        <p class="font-semibold text-white mb-2">Key Tech Stack:</p>
+                        <ul class="text-sm text-slate-300 list-disc list-inside space-y-1">
+                            <li><strong class="text-white">Backend:</strong> Python (FastAPI)</li>
+                            <li><strong class="text-white">Streaming:</strong> Apache Kafka</li>
+                            <li><strong class="text-white">AI:</strong> XGBoost, Scikit-learn</li>
+                            <li><strong class="text-white">Database:</strong> PostgreSQL</li>
+                        </ul>
+                    </div>
+                     <div class="card border-sky-500">
+                        <h3 class="text-xl font-bold highlight-text mb-4">Phase 2: Scale Architecture <span class="text-xs text-slate-400">(Months 19+)</span></h3>
+                        <p class="font-semibold text-white mb-2">Goal:</p>
+                        <p class="text-slate-300 text-sm mb-4">Expand to +75 units with a robust infrastructure, advanced BI, and MLOps.</p>
+                        <p class="font-semibold text-white mb-2">Key Tech Stack:</p>
+                        <ul class="text-sm text-slate-300 list-disc list-inside space-y-1">
+                             <li><strong class="text-white">Orchestration:</strong> Kubernetes (EKS/GKE)</li>
+                            <li><strong class="text-white">Advanced Streaming:</strong> Apache Flink</li>
+                            <li><strong class="text-white">MLOps:</strong> MLflow, Kubeflow</li>
+                            <li><strong class="text-white">Security:</strong> HashiCorp Vault</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <h4 class="font-bold text-white mb-3">Execution Principles</h4>
+                    <div class="flex flex-wrap justify-center gap-4 text-sm">
+                        <span class="bg-slate-800 px-3 py-1 rounded-full flex items-center gap-2"><i data-lucide="feather" class="w-4 h-4 text-emerald-400"></i>Ultra-Lean Start</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded-full flex items-center gap-2"><i data-lucide="move-right" class="w-4 h-4 text-emerald-400"></i>Progressive Migration</span>
+                        <span class="bg-slate-800 px-3 py-1 rounded-full flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>Defensibility by Data</span>
+                    </div>
+                </div>
+            </div>
+            <footer class="absolute bottom-4 left-0 right-0 text-center text-slate-500 text-xs">
+                <p>&copy; 2025 Rodando a Gas. All rights reserved.</p>
+            </footer>
+        </section>
+    </main>
+    <script>
+        lucide.createIcons();
+        
+        // Access Portal Logic
+        const accessPortal = document.getElementById('access-portal');
+        const presentationContent = document.getElementById('presentation-content');
+        const accessCodeInput = document.getElementById('access-code');
+        const accessButton = document.getElementById('access-button');
+        const errorMessage = document.getElementById('error-message');
+        const validCode = '2121';
+
+        function checkAccessCode() {
+            if (accessCodeInput.value.trim() === validCode) {
+                errorMessage.textContent = '';
+                accessPortal.style.opacity = '0';
+                setTimeout(() => {
+                    accessPortal.style.display = 'none';
+                    presentationContent.style.display = 'block';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            } else {
+                errorMessage.textContent = 'Incorrect code. Please try again.';
+                accessCodeInput.classList.add('shake');
+                setTimeout(() => {
+                    accessCodeInput.classList.remove('shake');
+                }, 820);
+            }
+        }
+        accessButton.addEventListener('click', checkAccessCode);
+        accessCodeInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAccessCode();
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$', right: '$', display: false},
+                    {left: '$$', right: '$$', display: true},
+                ]
+            });
+
+            // Chart.js Configuration
+            const commonChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleFont: { size: 16, weight: 'bold' },
+                        bodyFont: { size: 14 },
+                        padding: 12,
+                        cornerRadius: 8,
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        beginAtZero: true
+                    }
+                }
+            };
+            
+            // Default Rate Chart
+            const moraCtx = document.getElementById('moraChart')?.getContext('2d');
+            if (moraCtx) {
+                new Chart(moraCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Traditional Financier', 'Rodando a Gas (Target)'],
+                        datasets: [{
+                            label: 'Default Rate (%)',
+                            data: [20, 8],
+                            backgroundColor: ['#f43f5e', '#0ea5e9'],
+                            borderColor: ['#f43f5e', '#0ea5e9'],
+                            borderWidth: 1,
+                            borderRadius: 4,
+                        }]
+                    },
+                    options: { ...commonChartOptions, indexAxis: 'y' }
+                });
+            }
+            // Projections Chart
+            const proyeccionesCtx = document.getElementById('proyeccionesChart')?.getContext('2d');
+            if (proyeccionesCtx) {
+                new Chart(proyeccionesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Year 1 (35 Units)', 'Year 2 (75 Units)', 'Year 3 (150 Units)'],
+                        datasets: [
+                            {
+                                label: 'Annual Revenue (Million MXN)',
+                                data: [11.2, 24.1, 48.2], // Estimated data
+                                backgroundColor: '#0ea5e9',
+                                order: 2
+                            },
+                            {
+                                label: 'EBITDA (Million MXN)',
+                                data: [2.9, 7.2, 15.4], // Estimated data with >30% margin at scale
+                                backgroundColor: 'transparent',
+                                type: 'line',
+                                borderColor: '#34d399',
+                                tension: 0.4,
+                                order: 1,
+                                borderWidth: 3
+                            }
+                        ]
+                    },
+                    options: {
+                        ...commonChartOptions,
+                        plugins: {
+                            ...commonChartOptions.plugins,
+                            legend: { display: true, position: 'bottom', labels: { color: '#94a3b8' } }
+                        },
+                        scales: {
+                            ...commonChartOptions.scales,
+                            y: {
+                                ...commonChartOptions.scales.y,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + value + 'M';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Revenue Streams Chart
+            const streamsCtx = document.getElementById('streamsChart')?.getContext('2d');
+            if(streamsCtx) {
+                 new Chart(streamsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Financing Interest', 'Margin on Unit Sale', 'Commissions & Services'],
+                        datasets: [{
+                            data: [70, 20, 10], // Estimated percentages
+                            backgroundColor: ['#0ea5e9', '#22d3ee', '#67e8f9'],
+                            borderColor: '#0f172a',
+                            borderWidth: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                               display: false
+                            },
+                            tooltip: { ...commonChartOptions.plugins.tooltip,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed !== null) { label += context.parsed + '%'; }
+                                        return label;
+                                    }
+                                }
+                             }
+                        }
+                    }
+                });
+            }
+            
+            // Use of Funds Chart
+            const fondosCtx = document.getElementById('fondosChart')?.getContext('2d');
+            if(fondosCtx) {
+                new Chart(fondosCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Pilot Fleet (Phase 0/1)', 'Tech Development', 'Team Expansion'],
+                        datasets: [{
+                            data: [60, 25, 15],
+                            backgroundColor: ['#0ea5e9', '#0891b2', '#0e7490'],
+                            borderColor: '#020617',
+                            borderWidth: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#94a3b8',
+                                    font: { size: 12 },
+                                    padding: 20,
+                                }
+                            },
+                            tooltip: { ...commonChartOptions.plugins.tooltip }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
