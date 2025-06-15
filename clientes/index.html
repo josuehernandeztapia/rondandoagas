@@ -235,8 +235,31 @@ No pierdes tu unidad, no se te generan cargos extra, y juntos reprogramamos tus 
         <p class="text-xs mt-1">Una nueva forma de impulsar el transporte en México.</p>
     </footer>
 
-    <script>
+        <script>
         lucide.createIcons();
+    </script>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = new FormData(form);
+
+        fetch("https://script.google.com/macros/s/AKfycbyDOcDGS4Dhono5RvXgBeeRp42h3a0lnaDMSeToW7rrZU9QZYZGf2Y2f0dHOdvYAszYAA/exec", {
+          method: "POST",
+          body: data
+        })
+        .then(response => {
+          alert("✅ Tus datos fueron enviados con éxito.");
+          form.reset();
+        })
+        .catch(error => {
+          alert("❌ Hubo un error. Intenta de nuevo.");
+          console.error(error);
+        });
+      });
     </script>
 </body>
 </html>
+
